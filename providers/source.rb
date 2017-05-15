@@ -22,7 +22,7 @@
 include ::TdAgent::Version
 
 action :create do
-  fail 'You should set the node[:td_agent][:includes] attribute to true to use this resource.' unless node['td_agent']['includes']
+  raise 'You should set the node[:td_agent][:includes] attribute to true to use this resource.' unless node['td_agent']['includes']
 
   template "/etc/td-agent/conf.d/#{new_resource.source_name}.conf" do
     source 'source.conf.erb'

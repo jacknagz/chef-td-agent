@@ -47,17 +47,17 @@ end
 td_agent_match 'test_gelf_match' do
   type 'copy'
   tag 'webserver.*'
-  params( store: [{ type: 'gelf',
+  params(store: [{ type: 'gelf',
                    host: '127.0.0.1',
-                   port: 12201,
-                   flush_interval: '5s'},
-                   { type: 'stdout' }])
+                   port: 12_201,
+                   flush_interval: '5s' },
+                 { type: 'stdout' }])
 end
 
 td_agent_filter 'test_filter' do
   type 'record_transformer'
   tag 'webserver.*'
   params(
-    record: [ { host_param: %q|"#{Socket.gethostname}"| } ]
+    record: [{ host_param: %q("#{Socket.gethostname}") }]
   )
 end

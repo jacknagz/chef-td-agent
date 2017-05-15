@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANTFILE_API_VERSION = '2'
+VAGRANTFILE_API_VERSION = '2'.freeze
 
 Vagrant.require_version '>= 1.5.0'
 

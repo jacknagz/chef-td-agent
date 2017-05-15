@@ -22,7 +22,7 @@
 include ::TdAgent::Version
 
 action :create do
-  fail 'You should set the node[:td_agent][:includes] attribute to true to use this resource.' unless node['td_agent']['includes']
+  raise 'You should set the node[:td_agent][:includes] attribute to true to use this resource.' unless node['td_agent']['includes']
 
   template "/etc/td-agent/conf.d/#{new_resource.match_name}.conf" do
     source 'match.conf.erb'
@@ -59,7 +59,7 @@ end
 
 def params_to_text(params)
   body = ''
-  params.each do |k,v|
+  params.each do |k, v|
     if v.is_a?(Hash)
       body += "<#{k}>\n"
       body += params_to_text(v)
@@ -75,5 +75,5 @@ def params_to_text(params)
     end
   end
   indent = '  '
-  body.each_line.map{|line| "#{indent}#{line}"}.join
+  body.each_line.map { |line| "#{indent}#{line}" }.join
 end

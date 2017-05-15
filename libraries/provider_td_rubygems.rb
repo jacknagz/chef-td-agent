@@ -23,13 +23,12 @@ class Chef
   class Provider
     class Package
       class TdRubygems < Chef::Provider::Package::Rubygems
-
         class TdGemEnvironment < AlternateGemEnvironment
         end
 
         def initialize(new_resource, run_context = nil)
           super
-          gem_binary_path = new_resource.gem_binary.empty? ? td_gem_binary_path : new_resource.gem_binary 
+          gem_binary_path = new_resource.gem_binary.empty? ? td_gem_binary_path : new_resource.gem_binary
           @new_resource.gem_binary gem_binary_path
           @new_resource.package_name td_plugin_name if @new_resource.plugin
           @gem_env = TdGemEnvironment.new(gem_binary_path)
@@ -37,18 +36,18 @@ class Chef
         end
 
         def td_plugin_name
-          "fluent-plugin-#{@new_resource.package_name}" 
+          "fluent-plugin-#{@new_resource.package_name}"
         end
 
         def td_gem_binary_path
           if major && major != '1'
             # td-agent 2.x or later works with /opt
             '/usr/sbin/td-agent-gem'
-          elsif node['platform_family'] == "rhel" && node["kernel"]["machine"] == "x86_64"
-            "/usr/lib64/fluent/ruby/bin/fluent-gem"
+          elsif node['platform_family'] == 'rhel' && node['kernel']['machine'] == 'x86_64'
+            '/usr/lib64/fluent/ruby/bin/fluent-gem'
           else
             # older Ubuntu/Debian works with /usr/lib
-            "/usr/lib/fluent/ruby/bin/fluent-gem"
+            '/usr/lib/fluent/ruby/bin/fluent-gem'
           end
         end
       end

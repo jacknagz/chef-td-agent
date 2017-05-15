@@ -1,6 +1,5 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
-require 'chef-vault/test_fixtures'
 
 at_exit { ChefSpec::Coverage.report! }
 

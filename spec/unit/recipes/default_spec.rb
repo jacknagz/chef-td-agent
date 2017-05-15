@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'chef-td-agent::default' do
+describe 'td-agent::default' do
   context 'Ubuntu 14.04' do
     include_context 'converged recipe'
 
