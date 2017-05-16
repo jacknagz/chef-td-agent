@@ -117,7 +117,7 @@ package 'td-agent' do
   retry_delay 10
   if node['td_agent']['pinning_version']
     action :install
-    version node['td_agent']['version']
+    version "#{node['td_agent']['version']}-0"
   else
     action :upgrade
   end

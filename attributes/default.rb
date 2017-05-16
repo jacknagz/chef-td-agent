@@ -9,7 +9,7 @@ default['td_agent']['gid'] = nil
 default['td_agent']['user'] = 'td-agent'
 default['td_agent']['group'] = 'td-agent'
 
-default['td_agent']['version'] = '2.3.4'
+default['td_agent']['version'] = '2.3.5'
 default['td_agent']['internal_repo'] = false
 default['td_agent']['pinning_version'] = false
 default['td_agent']['apt_arch'] = 'amd64'
